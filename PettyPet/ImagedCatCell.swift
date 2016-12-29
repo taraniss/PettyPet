@@ -15,10 +15,10 @@ class ImagedCatCell: UICollectionViewCell {
     @IBOutlet weak var typeLabel: UILabel!
     
     func update(record: Record) {
-        if record.cat.photos.count > 0 {
-            imageView.image = record.cat.photos[0]
+        if record.cat!.photos!.count > 0 {
+            imageView.image = record.cat!.photos![0]
         }
         priceLabel.text = record.priceText()
-        typeLabel.text = record.cat.breed
+        typeLabel.text = record.cat!.breed
     }
 }

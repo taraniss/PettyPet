@@ -7,9 +7,19 @@
 //
 
 import Foundation
+import ObjectMapper
 
-struct RecordOwner {
-    let name: String
-    let surname: String
-    let phone: String
+class RecordOwner:Mappable {
+    var name: String?
+    var surname: String?
+    var phone: String?
+
+    func mapping(map: Map) {
+        name <- map["name"]
+        surname <- map["surname"]
+        phone <- map["phone"]
+    }
+
+    required init?(map: Map) {
+    }
 }

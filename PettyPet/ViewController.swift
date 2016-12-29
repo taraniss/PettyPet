@@ -7,39 +7,59 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireObjectMapper
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
+
+    var records: [Record] = [];
+
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
         
+        let refreshControl = UIRefreshControl()
+        refreshControl.backgroundColor = UIColor.white
+        refreshControl.tintColor = UIColor.red
+        refreshControl.addTarget(self, action: #selector(self.fetchRecords), for: .valueChanged)
+        
+        collectionView.refreshControl = refreshControl
+        
+        self.fetchRecords()
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return records().count
+        return records.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "catcell", for: indexPath) as! ImagedCatCell
-        cell.update(record: records()[indexPath.row])
+        cell.update(record: records[indexPath.row])
         return cell
     }
     
-    func records() -> [Record] {
-        var result: [Record] = []
-        
-        for i in 1...10 {
-            let imageName = "kittybab" + "\(i)"
-            let cat = Cat(breed: "Scottish " + "\(i)", gender: .male, age: 1, city: "Istanbul", description: "cok guzel", photos: [UIImage.init(named: imageName)!])
-            let owner = RecordOwner(name: "pinar", surname: "olguc", phone: "02342343213")
-            let record = Record(cat: cat, date: Date(), redordId: 123, status: .active, owner: owner, price: 12.5)
-            result.append(record)
+    func fetchRecords() {
+        self.records = [];
+        let URL = "http://localhost:5000/cats"
+        Alamofire.request(URL).responseObject { [weak self] (dataResponse: DataResponse<CatsResponse>)  in
+            guard let response = dataResponse.result.value,
+                let strongSelf = self else {
+                    return
+            }
+            if response.success {
+                print("Got data:")
+                print(response.data!)
+                for record in response.data! {
+                    strongSelf.records.append(record)
+                }
+                strongSelf.collectionView.refreshControl?.endRefreshing()
+                strongSelf.collectionView.reloadData()
+            } else {
+                print("Failed")
+            }
         }
-        
-        return result
     }
 }

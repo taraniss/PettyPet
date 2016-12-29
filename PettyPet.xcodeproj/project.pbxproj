@@ -18,6 +18,10 @@
 		9199C2071DFD954C00EE1C11 /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9199C2061DFD954C00EE1C11 /* Cat.swift */; };
 		9199C20A1DFD96AC00EE1C11 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9199C2091DFD96AC00EE1C11 /* Record.swift */; };
 		9199C20C1DFD973F00EE1C11 /* RecordOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9199C20B1DFD973F00EE1C11 /* RecordOwner.swift */; };
+		CFD3D0761E1516600091769A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD3D0731E1516600091769A /* Alamofire.framework */; };
+		CFD3D0771E1516600091769A /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD3D0741E1516600091769A /* AlamofireObjectMapper.framework */; };
+		CFD3D0781E1516600091769A /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD3D0751E1516600091769A /* ObjectMapper.framework */; };
+		CFD3D07D1E153A460091769A /* CatsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3D07C1E153A460091769A /* CatsResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,10 @@
 		9199C2061DFD954C00EE1C11 /* Cat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cat.swift; sourceTree = "<group>"; };
 		9199C2091DFD96AC00EE1C11 /* Record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		9199C20B1DFD973F00EE1C11 /* RecordOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordOwner.swift; sourceTree = "<group>"; };
+		CFD3D0731E1516600091769A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = SOURCE_ROOT; };
+		CFD3D0741E1516600091769A /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireObjectMapper.framework; path = Carthage/Build/iOS/AlamofireObjectMapper.framework; sourceTree = SOURCE_ROOT; };
+		CFD3D0751E1516600091769A /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = SOURCE_ROOT; };
+		CFD3D07C1E153A460091769A /* CatsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatsResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +70,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFD3D0781E1516600091769A /* ObjectMapper.framework in Frameworks */,
+				CFD3D0761E1516600091769A /* Alamofire.framework in Frameworks */,
+				CFD3D0771E1516600091769A /* AlamofireObjectMapper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +116,7 @@
 		9199C1D21DFD7D8200EE1C11 /* PettyPet */ = {
 			isa = PBXGroup;
 			children = (
+				CFD3D06C1E1515FE0091769A /* Frameworks */,
 				9199C2081DFD955200EE1C11 /* Models */,
 				9199C2031DFD926100EE1C11 /* Cells */,
 				9199C1D31DFD7D8200EE1C11 /* AppDelegate.swift */,
@@ -149,8 +161,19 @@
 				9199C2061DFD954C00EE1C11 /* Cat.swift */,
 				9199C2091DFD96AC00EE1C11 /* Record.swift */,
 				9199C20B1DFD973F00EE1C11 /* RecordOwner.swift */,
+				CFD3D07C1E153A460091769A /* CatsResponse.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		CFD3D06C1E1515FE0091769A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CFD3D0731E1516600091769A /* Alamofire.framework */,
+				CFD3D0741E1516600091769A /* AlamofireObjectMapper.framework */,
+				CFD3D0751E1516600091769A /* ObjectMapper.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,6 +186,7 @@
 				9199C1CC1DFD7D8200EE1C11 /* Sources */,
 				9199C1CD1DFD7D8200EE1C11 /* Frameworks */,
 				9199C1CE1DFD7D8200EE1C11 /* Resources */,
+				CFD3D0791E15167E0091769A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -216,7 +240,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Petty Pet AS";
 				TargetAttributes = {
 					9199C1CF1DFD7D8200EE1C11 = {
@@ -285,6 +309,25 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		CFD3D0791E15167E0091769A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AlamofireObjectMapper.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9199C1CC1DFD7D8200EE1C11 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -296,6 +339,7 @@
 				9199C1D41DFD7D8200EE1C11 /* AppDelegate.swift in Sources */,
 				9199C20C1DFD973F00EE1C11 /* RecordOwner.swift in Sources */,
 				9199C2051DFD927E00EE1C11 /* ImagedCatCell.swift in Sources */,
+				CFD3D07D1E153A460091769A /* CatsResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +412,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -417,6 +462,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -446,6 +492,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = SH63W6PH4B;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PettyPet/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = PettyPet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pettypet.PettyPet;
@@ -459,6 +510,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = SH63W6PH4B;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PettyPet/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = PettyPet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pettypet.PettyPet;
